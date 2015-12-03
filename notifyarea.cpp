@@ -16,7 +16,7 @@
  *
  */
 
-
+#include <QRegExp>
 #include <QToolTip> //alex
 #include <QX11Info> //alex
 #include <QSystemTrayIcon> //alex
@@ -76,13 +76,33 @@ else
 	QIcon::setThemeName(systemIcon);
 }
 //alex:
-if (widgetStyle.contains("qtfg") || widgetStyle.contains("qtbg"))
+QRegExp specialColors = QRegExp("Qt(?:ToolTip(?:Base|Text)|Window|Foreground|"
+                                "(?:Alternate)?Base|"
+                                "(?:Bright)?Text|Button(?:Text)?)", Qt::CaseInsensitive);
+if (widgetStyle.contains(specialColors))
 {
 	QPalette pal = QToolTip::palette();
-	QColor bg = pal.color(QPalette::ToolTipBase);
-	QColor fg = pal.color(QPalette::ToolTipText);
-	widgetStyle.replace("qtbg",bg.name());
-	widgetStyle.replace("qtfg",fg.name());
+	QColor tt_base = pal.color(QPalette::ToolTipBase);
+	QColor tt_text = pal.color(QPalette::ToolTipText);
+	QColor window  = pal.color(QPalette::Window);
+	QColor foreground = pal.color(QPalette::Foreground);
+	QColor base = pal.color(QPalette::Base);
+	QColor alternate_base = pal.color(QPalette::AlternateBase);
+	QColor text = pal.color(QPalette::Text);
+	QColor button = pal.color(QPalette::Button);
+	QColor btn_text = pal.color(QPalette::ButtonText);
+	QColor brt_text = pal.color(QPalette::BrightText);
+
+	widgetStyle.replace("QtToolTipBase",   tt_base.name(),        Qt::CaseInsensitive);
+	widgetStyle.replace("QtToolTipText",   tt_text.name(),        Qt::CaseInsensitive);
+	widgetStyle.replace("QtWindow",        window.name(),         Qt::CaseInsensitive);
+	widgetStyle.replace("QtForeground",    foreground.name(),     Qt::CaseInsensitive);
+	widgetStyle.replace("QtBase",          base.name(),           Qt::CaseInsensitive);
+	widgetStyle.replace("QtAlternateBase", alternate_base.name(), Qt::CaseInsensitive);
+	widgetStyle.replace("QtText",          text.name(),           Qt::CaseInsensitive);
+	widgetStyle.replace("QtButton",        button.name(),         Qt::CaseInsensitive);
+	widgetStyle.replace("QtButtonText",    btn_text.name(),       Qt::CaseInsensitive);
+	widgetStyle.replace("QtBrightText",    brt_text.name(),       Qt::CaseInsensitive);
 }
 	
 for(int i=1;i<4;i++) UrgencyTag[i] = this->readConfigString("UrgencyTag"+QString::number(i));

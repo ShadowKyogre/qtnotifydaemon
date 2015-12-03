@@ -9,3 +9,8 @@ Exec=/usr/bin/qtnotifydaemon
 
 CONFIGURATION
 Default config file $HOME/.config/qtnotifydaemon/qtnotifydaemon.conf will appear after first launch.
+
+Any of the special colors listed on
+[QPalette's color roles](http://doc.qt.io/qt-4.8/qpalette.html#ColorRole-enum)
+also work for specifying system colors to use in qtnotifydaemon. Just prefix
+the selected color roles with Qt to use them in your configuration.
