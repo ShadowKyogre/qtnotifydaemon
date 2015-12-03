@@ -63,6 +63,18 @@ if(widgetStyle=="")
 	{
 	widgetStyle = "margin: 0px; background: black; border: 3px solid white; color: lime; border-radius: 15px;";
 	}
+iconOverride = this->readConfigString("OverrideIconTheme");
+if(iconOverride == NULL){
+	systemIcon = QIcon::themeName();
+}
+if(iconOverride!="")
+{
+	QIcon::setThemeName(iconOverride);
+}
+else
+{
+	QIcon::setThemeName(systemIcon);
+}
 //alex:
 if (widgetStyle.contains("qtfg") || widgetStyle.contains("qtbg"))
 {

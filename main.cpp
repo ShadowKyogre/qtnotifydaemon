@@ -29,7 +29,7 @@
 #include <unistd.h>
 
 //alex: use qtbg, qtfg, border width (1 instead of 3) and other positions (bottom and top right) by default
-char configcontent[1024]="\
+char configcontent[1100]="\
 #Widget style\n\
 GeneralStyle = margin: 0px; background: qtbg; border: 1px solid qtfg; color: qtfg; border-radius: 15px; font-size: 14px;\n\
 \n\
@@ -45,7 +45,8 @@ UrgencyTag3 = <b><u><font color=red>\n\
 #Opacity floating point value: 0-1\n\
 Opacity = 0.8\n\
 MaxIconSize = 80\n\
-\n\
+#You should only set this if Qt isn't detecting the right icon theme to use\n\
+OverrideIconTheme = \n\
 #Widgets position: \n\
 # 0 (or BL) - bottomLeft\n\
 # 1 (or BR) - bottomRight\n\

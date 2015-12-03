@@ -67,6 +67,8 @@ int convertSpecialSymbols;
 float maxOpacity;
 int maxIconSize;
 QString widgetStyle;
+QString iconOverride;
+QString systemIcon;
 QString UrgencyTag[4];
 QMyDBusAbstractAdaptor *adaptor;
 
